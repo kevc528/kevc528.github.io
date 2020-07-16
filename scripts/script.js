@@ -12,7 +12,10 @@ function downloadResume() {
 
 function innerLoadNav() {
   $("#nav-placeholder").load("../nav.html");
-  $("#download-button").attr('onclick', 'innerDownloadResume()');
+  $("#home-link").attr("href", "../");
+  $("#projects-link").attr("href", "../projects");
+  $("#contact-link").attr("href", "../contact");
+  $("#download-button").attr("onclick", "innerDownloadResume()");
 }
 
 function innerLoadFooter() {
