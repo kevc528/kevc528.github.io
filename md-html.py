@@ -32,7 +32,7 @@ first_half = f"""
   <body>
     <div id="nav-placeholder"></div>
     <script>
-      loadNav();
+      innerLoadNav();
     </script>
     <div class = 'container' style="width: 600px; margin-top:40px;">
 """
@@ -42,7 +42,7 @@ second_half = """
   </body>
   <footer class="footer my-5 pt-5 text-muted text-center text-small" id="footer-placeholder"></footer>
   <script>
-    loadFooter();
+    innerLoadFooter();
   </script>
 </html>
 """
