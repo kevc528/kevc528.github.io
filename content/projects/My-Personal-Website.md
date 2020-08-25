@@ -46,7 +46,7 @@ opportunity to try it out. That being said, having worked with Angular during th
 Actual development for this version wasn't too bad. I reused some of the templates I already had from the Django 
 version and used JavaScript and jQuery to replicate the same functionality. jQuery was really nice for increasing 
 interactivity of the website, like filtering project list based on the tag clicked, and also reducing the amount 
-of repeated HTML I had to write (because who really enjoys writing raw HTML right?).
+of repeated HTML I had to write.
 
 The one big change I had to make in my transition from Django was how I was going to store my posts, like this 
 one. Originally in Django, I would just put it in the database, but now I need a new solution. I knew that I 
