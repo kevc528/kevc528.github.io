@@ -1,6 +1,17 @@
 # OurStatus
 > A cross-platform social media app promoting productivity
 
+---
+**Web Platform**
+
+<https://www.ourstat.us>
+
+**Source Code**
+
+<https://github.com/kevc528/OurStatus>
+
+---
+
 ![OurStatus](/content/images/OurStatusLogo.jpg)
 
 ## About
