@@ -74,15 +74,21 @@ and created the different collections based on this idea. So the main collection
 comments, and friendship based on the main functionality of our app. To increase the performance, I also made 
 sure to take advantage of using primary keys and creating composite indexes based on queries we'd have to use.</p>
 
-<p>Other features I found useful were Firebase's authentication and cloud storage. Our app was able to use 
-Firebase's authentication to securely store passwords, verify sign in credentials, and handle changing passwords. 
-The cloud storage was useful for storing, updating, and retrieving profile pictures for each user.</p>
+<p>Other features I found useful were Firebase's authentication, cloud storage, cloud functions. Our app was able to 
+use Firebase's authentication to securely store passwords, verify sign in credentials, and handle changing 
+passwords. The cloud storage was useful for storing, updating, and retrieving profile pictures for each user. And 
+the cloud functions were useful for maintaining and managing data consistency. Cloud functions were used to 
+delete comments associated with a task when tasks were deleted, and also to delete expired cookies saved in the 
+database. The cloud functions were nice because they could run without having to write a server.</p>
 
 <h3>Angular App</h3>
 
+<p><img src="/content/images/ourstatus-web.jpg" alt="Web App" /></p>
+
 <p>For the Angular web app, I mainly relied on using the AngularFire library to interact with data. The AngularFire 
 library is an official Angular library for Firebase that combines the native JavaScript Firebase SDK with RxJS. 
-This library was really helpful because it was based on RxJS observables, making live updates to the app (i.e. feed, comments, etc.) very easy to implement in Angular.</p>
+This library was really helpful because it was based on RxJS observables, making live updates to the app (i.e. 
+feed, comments, etc.) very easy to implement in Angular.</p>
 
 <h5>Cookie Based Authentication</h5>
 
@@ -92,7 +98,13 @@ that means the cookies have to be very secure and hard to forge, or else account
 
 <p>For this to work, the browser would store a cookie with a randomly generated ID having over a noniliion (10^30+) 
 possiblities. This randomly generated session ID would be associated with the id of the signed in user, and this 
-relationship was stored as a record in the database. This way, the client-side code has no control over that relationship. So whenever a user signs in, a cookie and database entry are created, and when the user signs out, the cookie and database entry are destroyed. Additionally, there are expiration times for the cookies that will invalidate that cookie and delete the database entry no matter what.</p>
+relationship was stored as a record in the database. This way, the client-side code has no control over that 
+relationship. So whenever a user signs in, a cookie and database entry are created, and when the user signs out, 
+the cookie and database entry are destroyed. Additionally, there are expiration times for the cookies that will 
+invalidate that cookie and delete the database entry no matter what. For this, I used a cloud function to scan 
+through and delete any expired cookies whenever the cookie collection was updated. Ideally, I would use a 
+scheduled cron job to clear out expired cookies periodically, but those cost money so I decided that using 
+the write trigger would have to do :).</p>
 
 <p>With this in place, the Angular app can look for a valid cookie first. And if it exists, it can automatically 
 load the session state for the signed in user.</p>
