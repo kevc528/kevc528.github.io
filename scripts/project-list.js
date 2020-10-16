@@ -2,7 +2,7 @@ const PROJECTS = [
   {
     title: 'OurStatus',
     start_date: '5/2020',
-    end_date: 'Present',
+    end_date: '8/2020',
     categories: ['Web Development', 'Mobile Development']
   },
   {
